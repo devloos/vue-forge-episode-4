@@ -1,4 +1,4 @@
 {
-  // https://nuxt.com/docs/guide/concepts/typescript
+  "compilerOptions": { "types": ["./node_modules/.kadena/pactjs-generated"] },
   "extends": "./.nuxt/tsconfig.json"
 }
