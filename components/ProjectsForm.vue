@@ -93,6 +93,25 @@ const submitForm = async () => {
   const startsAt = getExactStartTimeFromDateField(form.startsAt);
 
   // 👉 this is where you will do your saving to the blockchain and the DB
+  const val = await createProjectInDB({
+    title: form.title,
+    description: form.description,
+    image: form.image,
+    categoryUuid: form.categoryUuid,
+    startsAt: startsAt,
+    finishesAt: form.finishesAt,
+  });
+
+  const val2 = await createOnBlockchain({
+    id: "kldjalsfkj",
+    name: form.title,
+    startsAt: startsAt,
+    finishesAt: form.finishesAt,
+    hardCap: form.hardCap.toString(),
+    softCap: form.softCap.toString(),
+  });
+
+  console.log(val, val2);
 
   useAlerts().success("Project created");
 };
